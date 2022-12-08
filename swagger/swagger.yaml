@@ -9,7 +9,7 @@ basePath: /api/v1
 schemes:
   - http
 paths:
-  /user/transactions:
+  /transactions:
     get:
       security:
         - Bearer: []
@@ -31,9 +31,13 @@ paths:
           schema:
             $ref: '#/definitions/User_Transactions_GET_Response'
         '400':
-          description: Invalid Fields
+          description: Empty or incorrect fields.
+        '401':
+          description: Unauthorized access for this endpoint.
+        '404':
+          description: The transaction does not exist or has been deleted.
         '500':
-          description: Internal Server Error
+          description: The server has encountered an internal server error. Please try again later.
     post:
       security:
         - Bearer: []
@@ -56,16 +60,18 @@ paths:
       produces:
         - application/json
       responses:
-        '200':
+        '201':
           description: User's transaction successfully created
           schema:
             $ref: '#/definitions/User_Transactions_POST_Response'
         '400':
-          description: Invalid Fields
+          description: Empty or incorrect fields.
+        '401':
+          description: Unauthorized access for this endpoint.
         '500':
-          description: Internal Server Error
-          
-  /user/transactions/{transactionId}:
+          description: The server has encountered an internal server error. Please try again later.
+
+  /transactions/{transactionId}:
     get:
       security:
         - Bearer: []
@@ -92,9 +98,13 @@ paths:
           schema:
             $ref: '#/definitions/User_Transaction_GET_Response'
         '400':
-          description: Invalid Fields
+          description: Empty or incorrect fields.
+        '401':
+          description: Unauthorized access for this endpoint.
+        '404':
+          description: The transaction does not exist or has been deleted.
         '500':
-          description: Internal Server Error
+          description: The server has encountered an internal server error. Please try again later.
     put:
       security:
         - Bearer: []
@@ -127,9 +137,13 @@ paths:
           schema:
             $ref: '#/definitions/User_Transaction_PUT_Response'
         '400':
-          description: Invalid Fields
+          description: Empty or incorrect fields.
+        '401':
+          description: Unauthorized access for this endpoint.
+        '404':
+          description: The transaction does not exist or has been deleted.
         '500':
-          description: Internal Server Error
+          description: The server has encountered an internal server error. Please try again later.
     delete:
       security:
         - Bearer: []
@@ -156,17 +170,21 @@ paths:
           schema:
             $ref: '#/definitions/User_Transaction_DELETE_Response'
         '400':
-          description: Invalid Fields
+          description: Empty or incorrect fields.
+        '401':
+          description: Unauthorized access for this endpoint.
+        '404':
+          description: The transaction does not exist or has already been deleted.
         '500':
-          description: Internal Server Error
-    
+          description: The server has encountered an internal server error. Please try again later.
+
 securityDefinitions:
   Bearer:
     type: apiKey
     name: Authorization
     in: header
-definitions:
 
+definitions:
   User_Transactions_GET_Response:
     type: object
     properties:
@@ -179,7 +197,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/UserTransactions'
-          
+
   User_Transactions_POST_Response:
     type: object
     properties:
@@ -192,7 +210,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/UserTransaction'
-          
+
   User_Transaction_GET_Response:
     type: object
     properties:
@@ -205,7 +223,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/UserTransaction'
-          
+
   User_Transaction_PUT_Response:
     type: object
     properties:
@@ -218,7 +236,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/UserTransaction'
-          
+
   User_Transaction_DELETE_Response:
     type: object
     properties:
@@ -232,6 +250,9 @@ definitions:
     type: object
     properties:
       id:
+        type: number
+        format: integer
+      authorId:
         type: number
         format: integer
       title:
@@ -250,8 +271,8 @@ definitions:
   UserTransactions:
     type: array
     items:
-     $ref: '#/definitions/UserTransaction'
-          
+      $ref: '#/definitions/UserTransaction'
+
   UserTransactionPayload:
     properties:
       title:
