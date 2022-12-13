@@ -9,7 +9,7 @@ basePath: /api/v1
 schemes:
   - http
 paths:
-  /transactions:
+  /transactions/{userId}:
     get:
       security:
         - Bearer: []
@@ -35,7 +35,7 @@ paths:
         '401':
           description: Unauthorized access for this endpoint.
         '404':
-          description: The transaction does not exist or has been deleted.
+          description: No existing transactions on your account..
         '500':
           description: The server has encountered an internal server error. Please try again later.
     post:
