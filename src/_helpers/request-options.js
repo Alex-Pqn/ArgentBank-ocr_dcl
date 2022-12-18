@@ -1,49 +1,27 @@
 export const requestOptions = {
-  get() {
-    return {
-      method: 'GET',
-      ...getHeaders(),
-    };
-  },
-  post(body) {
+  post(payload, customHeaders) {
     return {
       method: 'POST',
-      ...getHeaders(),
-      body: JSON.stringify(body),
+      headers: {
+        ...customHeaders,
+      },
+      body: JSON.stringify(payload),
     };
   },
-  postFormData(formData) {
-    return {
-      method: 'POST',
-      body: formData,
-    };
-  },
-  patch(body) {
-    return {
-      method: 'PATCH',
-      ...getHeaders(),
-      body: JSON.stringify(body),
-    };
-  },
-  put(body) {
+  put(payload, customHeaders) {
     return {
       method: 'PUT',
-      ...getHeaders(),
-      body: JSON.stringify(body),
-    };
-  },
-  delete() {
-    return {
-      method: 'DELETE',
-      ...getHeaders(),
+      headers: {
+        ...getDefaultHeaders(),
+        ...customHeaders,
+      },
+      body: JSON.stringify(payload),
     };
   },
 };
 
-function getHeaders() {
+function getDefaultHeaders() {
   return {
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8',
-    },
+    'Content-Type': 'application/json;charset=utf-8',
   };
 }
