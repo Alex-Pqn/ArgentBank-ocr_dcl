@@ -1,0 +1,30 @@
+import { requestOptions } from '../_helpers/request-options';
+import { authRoutes } from '../config/api/routes/auth.routes.config';
+
+export const authService = {
+  loginOne,
+};
+
+/**
+ * POST: Auth Login
+ * Login one user
+ * @returns User token
+ */
+async function loginOne(payload, customHeaders) {
+  return fetch(
+    authRoutes.authLogin(),
+    requestOptions.post(payload, customHeaders)
+  )
+    .then((res) => {
+      if (res.status === 400)
+        return Promise.reject('Email or password incorrect.');
+      if (!res.ok)
+        return Promise.reject('Unable to login. Please try again later.');
+
+      return res.json();
+    })
+    .then((req) => req.body)
+    .catch((err) => {
+      throw err;
+    });
+}
