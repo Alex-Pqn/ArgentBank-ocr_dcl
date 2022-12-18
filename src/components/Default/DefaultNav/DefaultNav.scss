@@ -16,7 +16,11 @@
 
 .main-nav-item {
   text-decoration: none;
-  margin-right: 0.5rem;
+  margin-left: 1rem;
+
+  .fa-user-circle {
+    margin: 0 0.3em;
+  }
 }
 
 .main-nav-item:hover {

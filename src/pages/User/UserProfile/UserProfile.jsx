@@ -33,7 +33,7 @@ const UserProfile = () => {
     dispatch(userActions.retrieveUserProfile(user.token));
   }, [dispatch, user.token]);
 
-  if (!user.isLogged) return <Navigate to="/" />;
+  if (!user.isLogged) return <Navigate to="/login" />;
 
   return (
     <div className="user-profile bg-dark">
@@ -51,7 +51,7 @@ const UserProfile = () => {
 
         {/* Form */}
         {isFormDisplayed && (
-          <form onSubmit={onSubmit}>
+          <form className="user-profile__form" onSubmit={onSubmit}>
             <div className="input">
               <input
                 required
@@ -77,7 +77,7 @@ const UserProfile = () => {
                 Save
               </button>
               <button
-                className="edit-button form-button"
+                className="cancel-button form-button"
                 type="button"
                 onClick={hideForm}
               >
