@@ -7,8 +7,8 @@ export const initialState = {
     email: '',
     firstName: '',
     lastName: '',
+    isRemembered: false,
     isLogged: false,
-    token: '',
     createdAt: '',
     updatedAt: '',
   },
@@ -22,8 +22,8 @@ const userReducers = (state = initialState, action) => {
         user: {
           ...state.user,
           isLogged: true,
+          isRemembered: action.payload.user.isRemembered,
           email: action.payload.user.email,
-          token: action.payload.user.token,
         },
       };
 

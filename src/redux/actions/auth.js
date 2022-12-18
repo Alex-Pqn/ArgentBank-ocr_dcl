@@ -8,12 +8,18 @@ const login = (email, password, isRemembered) => {
         { email, password },
         { 'Content-Type': 'application/json;charset=utf-8' }
       )
-      .then((retrievedAuth) =>
+      .then((retrievedAuth) => {
+        isRemembered
+          ? localStorage.setItem('token', retrievedAuth.token)
+          : sessionStorage.setItem('token', retrievedAuth.token);
+
         dispatch({
           type: STATUS.LOGIN_SUCCESS,
-          payload: { user: { email, token: retrievedAuth.token } },
-        })
-      )
+          payload: {
+            user: { email, isRemembered },
+          },
+        });
+      })
       .catch((error) =>
         dispatch({
           type: STATUS.LOGIN_ERROR,

@@ -1,4 +1,5 @@
 import { requestOptions } from '../_helpers/request-options';
+import { handleResponse } from '../_helpers/handle-response';
 import { userRoutes } from '../config/api/routes/user.routes.config';
 
 import UserModel from '../_models/user/user.model';
@@ -19,6 +20,7 @@ async function retrieveOneProfile(customHeaders) {
     userRoutes.userProfile(),
     requestOptions.post(null, customHeaders)
   )
+    .then(handleResponse)
     .then((res) => {
       if (!res.ok) return Promise.reject('Unable to get one user profile.');
       return res.json();
@@ -42,6 +44,7 @@ async function updateOneProfile(payload, customHeaders) {
     userRoutes.userProfile(),
     requestOptions.put(payload, customHeaders)
   )
+    .then(handleResponse)
     .then((res) => {
       if (!res.ok) return Promise.reject('Unable to update one user profile.');
       return res.json();

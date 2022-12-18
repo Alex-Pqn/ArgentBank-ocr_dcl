@@ -12,12 +12,14 @@ const FormUserLogin = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isRemembered, setIsRemembered] = useState('');
+  const [isRemembered, setIsRemembered] = useState(false);
 
   const updateEmailState = (event) => setEmail(event.target.value);
   const updatePasswordState = (event) => setPassword(event.target.value);
   const updateIsRememberedState = (event) =>
-    setIsRemembered(event.target.value);
+    event.target.value === 'on'
+      ? setIsRemembered(true)
+      : setIsRemembered(false);
 
   const onSubmit = (event) => {
     event.preventDefault();

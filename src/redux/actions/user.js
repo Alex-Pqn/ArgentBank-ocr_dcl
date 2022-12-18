@@ -2,12 +2,12 @@ import { userService } from '../../_services/user.service';
 import { STATUS } from '../config/status.js';
 
 const retrieveUserProfile = () => {
-  return (dispatch, getState) => {
-    const { user } = getState('userReducers').userReducers;
-
+  return (dispatch) => {
     userService
       .retrieveOneProfile({
-        Authorization: `Bearer` + user.token,
+        Authorization:
+          `Bearer` +
+          (sessionStorage.getItem('token') || localStorage.getItem('token')),
       })
       .then((retrievedUser) =>
         dispatch({
@@ -28,14 +28,14 @@ const retrieveUserProfile = () => {
 };
 
 const updateUserProfile = (firstName, lastName) => {
-  return (dispatch, getState) => {
-    const { user } = getState('userReducers').userReducers;
-
+  return (dispatch) => {
     userService
       .updateOneProfile(
         { firstName, lastName },
         {
-          Authorization: `Bearer` + user.token,
+          Authorization:
+            `Bearer` +
+            (sessionStorage.getItem('token') || localStorage.getItem('token')),
         }
       )
       .then((updatedUser) =>
