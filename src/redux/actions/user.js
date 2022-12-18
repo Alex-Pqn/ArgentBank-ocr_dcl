@@ -1,4 +1,5 @@
 import { userService } from '../../_services/user.service';
+import { handleResponse } from '../../_helpers/handle-response';
 import { STATUS } from '../config/status.js';
 
 const retrieveUserProfile = () => {
@@ -9,21 +10,24 @@ const retrieveUserProfile = () => {
           `Bearer` +
           (sessionStorage.getItem('token') || localStorage.getItem('token')),
       })
-      .then((retrievedUser) =>
+      .then(handleResponse)
+      .then((user) =>
         dispatch({
           type: STATUS.USER_REQUEST,
           payload: {
             user: {
-              id: retrievedUser.id,
-              firstName: retrievedUser.firstName,
-              lastName: retrievedUser.lastName,
-              createdAt: retrievedUser.createdAt,
-              updatedAt: retrievedUser.updatedAt,
+              id: user.id,
+              firstName: user.firstName,
+              lastName: user.lastName,
+              createdAt: user.createdAt,
+              updatedAt: user.updatedAt,
             },
           },
         })
       )
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        throw error;
+      });
   };
 };
 
@@ -38,21 +42,24 @@ const updateUserProfile = (firstName, lastName) => {
             (sessionStorage.getItem('token') || localStorage.getItem('token')),
         }
       )
-      .then((updatedUser) =>
+      .then(handleResponse)
+      .then((user) =>
         dispatch({
           type: STATUS.USER_REQUEST,
           payload: {
             user: {
-              id: updatedUser.id,
-              firstName: updatedUser.firstName,
-              lastName: updatedUser.lastName,
-              createdAt: updatedUser.createdAt,
-              updatedAt: updatedUser.updatedAt,
+              id: user.id,
+              firstName: user.firstName,
+              lastName: user.lastName,
+              createdAt: user.createdAt,
+              updatedAt: user.updatedAt,
             },
           },
         })
       )
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        throw error;
+      });
   };
 };
 

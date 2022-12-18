@@ -1,4 +1,5 @@
 import { authService } from '../../_services/auth.service';
+import { handleResponse } from '../../_helpers/handle-response';
 import { STATUS } from '../config/status.js';
 
 const login = (email, password, isRemembered) => {
@@ -8,6 +9,7 @@ const login = (email, password, isRemembered) => {
         { email, password },
         { 'Content-Type': 'application/json;charset=utf-8' }
       )
+      .then(handleResponse)
       .then((retrievedAuth) => {
         isRemembered
           ? localStorage.setItem('token', retrievedAuth.token)

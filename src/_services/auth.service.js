@@ -1,4 +1,5 @@
 import { requestOptions } from '../_helpers/request-options';
+import { handleResponse } from '../_helpers/handle-response';
 import { authRoutes } from '../config/api/routes/auth.routes.config';
 
 import AuthLoginModel from '../_models/auth/auth.login.model';
@@ -14,11 +15,12 @@ export const authService = {
  * @param {Object} payload.customHeaders
  * @returns {AuthLoginModel}
  */
-async function loginOne(payload, customHeaders) {
+function loginOne(payload, customHeaders) {
   return fetch(
     authRoutes.authLogin(),
     requestOptions.post(payload, customHeaders)
   )
+    .then(handleResponse)
     .then((res) => {
       if (res.status === 400)
         return Promise.reject('Email or password incorrect.');

@@ -15,7 +15,7 @@ export const userService = {
  * @param {Object} customHeaders
  * @returns {UserModel}
  */
-async function retrieveOneProfile(customHeaders) {
+function retrieveOneProfile(customHeaders) {
   return fetch(
     userRoutes.userProfile(),
     requestOptions.post(null, customHeaders)
@@ -39,7 +39,7 @@ async function retrieveOneProfile(customHeaders) {
  * @param {Object} customHeaders
  * @returns {UserModel}
  */
-async function updateOneProfile(payload, customHeaders) {
+function updateOneProfile(payload, customHeaders) {
   return fetch(
     userRoutes.userProfile(),
     requestOptions.put(payload, customHeaders)
