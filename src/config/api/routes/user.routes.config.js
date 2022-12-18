@@ -3,28 +3,11 @@ import { getApi } from '../api.config';
 const getBaseRoute = () => getApi() + '/user';
 
 /**
- * POST: User Login
- * Login user
- * @returns User token
+ * User Profile Route
  */
-const postUserLogin = () => getBaseRoute() + '/login';
-
-/**
- * POST: User Profile
- * Retrieves user profile
- * @returns User Profile
- */
-const postUserProfile = () => getBaseRoute() + '/profile';
-
-/**
- * PUT: User Profile
- * Update user profile
- * @returns User Profile
- */
-const putUserProfile = () => getBaseRoute() + '/profile';
+const userProfile = () => getBaseRoute() + '/profile';
 
 export const userRoutes = {
-  postUserLogin,
-  postUserProfile,
-  putUserProfile,
+  getBaseRoute,
+  userProfile,
 };
