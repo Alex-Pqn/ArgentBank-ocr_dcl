@@ -1,6 +1,8 @@
 import { requestOptions } from '../_helpers/request-options';
 import { authRoutes } from '../config/api/routes/auth.routes.config';
 
+import AuthLoginModel from '../_models/auth/auth.login.model';
+
 export const authService = {
   loginOne,
 };
@@ -23,7 +25,7 @@ async function loginOne(payload, customHeaders) {
 
       return res.json();
     })
-    .then((req) => req.body)
+    .then((req) => new AuthLoginModel(req.body))
     .catch((err) => {
       throw err;
     });
