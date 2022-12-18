@@ -26,7 +26,7 @@ const userReducers = (state = initialState, action) => {
           token: action.payload.user.token,
         },
       };
-      
+
     case STATUS.LOGIN_ERROR:
       return {
         ...state,

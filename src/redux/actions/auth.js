@@ -8,10 +8,10 @@ const login = (email, password, isRemembered) => {
         { email, password },
         { 'Content-Type': 'application/json;charset=utf-8' }
       )
-      .then((retrievedUser) =>
+      .then((retrievedAuth) =>
         dispatch({
           type: STATUS.LOGIN_SUCCESS,
-          payload: { user: { email, token: retrievedUser.token } },
+          payload: { user: { email, token: retrievedAuth.token } },
         })
       )
       .catch((error) =>

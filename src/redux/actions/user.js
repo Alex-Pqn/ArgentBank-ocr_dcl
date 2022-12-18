@@ -38,7 +38,7 @@ const updateUser = (firstName, lastName) => {
           Authorization: `Bearer` + user.token,
         }
       )
-      .then((updatedUser) => {
+      .then((updatedUser) =>
         dispatch({
           type: STATUS.USER_REQUEST,
           payload: {
@@ -50,8 +50,8 @@ const updateUser = (firstName, lastName) => {
               updatedAt: updatedUser.updatedAt,
             },
           },
-        });
-      })
+        })
+      )
       .catch((error) => console.log(error));
   };
 };
