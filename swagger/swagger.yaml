@@ -38,6 +38,8 @@ paths:
           description: No existing transactions on your account..
         '500':
           description: The server has encountered an internal server error. Please try again later.
+
+  /transactions:
     post:
       security:
         - Bearer: []
@@ -275,6 +277,8 @@ definitions:
 
   UserTransactionPayload:
     properties:
+      userId:
+        type: number
       title:
         type: string
       description:
