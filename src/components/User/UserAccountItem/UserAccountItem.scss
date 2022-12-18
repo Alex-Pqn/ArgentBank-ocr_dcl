@@ -45,4 +45,5 @@
 
 .account-item-button {
   @include Button(#00bc77);
+  width: 100% !important;
 }
