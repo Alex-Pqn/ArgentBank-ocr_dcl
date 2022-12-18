@@ -1,12 +1,12 @@
 import { userService } from '../../_services/user.service';
 import { STATUS } from '../config/status.js';
 
-const retrieveUser = () => {
+const retrieveUserProfile = () => {
   return (dispatch, getState) => {
     const { user } = getState('userReducers').userReducers;
 
     userService
-      .retrieveOneProfile(null, {
+      .retrieveOneProfile({
         Authorization: `Bearer` + user.token,
       })
       .then((retrievedUser) =>
@@ -27,7 +27,7 @@ const retrieveUser = () => {
   };
 };
 
-const updateUser = (firstName, lastName) => {
+const updateUserProfile = (firstName, lastName) => {
   return (dispatch, getState) => {
     const { user } = getState('userReducers').userReducers;
 
@@ -57,6 +57,6 @@ const updateUser = (firstName, lastName) => {
 };
 
 export const userActions = {
-  retrieveUser,
-  updateUser,
+  retrieveUserProfile,
+  updateUserProfile,
 };

@@ -9,8 +9,10 @@ export const authService = {
 
 /**
  * POST: Auth Login
- * Login one user
- * @returns User token
+ * @param {String} payload.email
+ * @param {String} payload.password
+ * @param {Object} payload.customHeaders
+ * @returns {AuthLoginModel}
  */
 async function loginOne(payload, customHeaders) {
   return fetch(

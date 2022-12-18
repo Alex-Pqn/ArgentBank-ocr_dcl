@@ -11,12 +11,13 @@ export const userService = {
 /**
  * POST: User Profile
  * Retrieves user profile
- * @returns User Profile
+ * @param {Object} customHeaders
+ * @returns {UserModel}
  */
-async function retrieveOneProfile(payload, customHeaders) {
+async function retrieveOneProfile(customHeaders) {
   return fetch(
     userRoutes.userProfile(),
-    requestOptions.post(payload, customHeaders)
+    requestOptions.post(null, customHeaders)
   )
     .then((res) => {
       if (!res.ok) return Promise.reject('Unable to get one user profile.');
@@ -31,7 +32,10 @@ async function retrieveOneProfile(payload, customHeaders) {
 /**
  * PUT: User Profile
  * Update user profile
- * @returns User Profile
+ * @param {String} payload.firstName
+ * @param {String} payload.lastName
+ * @param {Object} customHeaders
+ * @returns {UserModel}
  */
 async function updateOneProfile(payload, customHeaders) {
   return fetch(

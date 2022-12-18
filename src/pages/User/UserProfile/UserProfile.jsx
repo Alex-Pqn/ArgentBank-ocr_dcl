@@ -21,7 +21,7 @@ const UserProfile = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    dispatch(userActions.updateUser(firstName, lastName));
+    dispatch(userActions.updateUserProfile(firstName, lastName));
     setIsFormDisplayed(false);
   };
 
@@ -30,7 +30,7 @@ const UserProfile = () => {
   const hideForm = () => setIsFormDisplayed(false);
 
   useEffect(() => {
-    dispatch(userActions.retrieveUser(user.token));
+    dispatch(userActions.retrieveUserProfile(user.token));
   }, [dispatch, user.token]);
 
   if (!user.isLogged) return <Navigate to="/" />;
@@ -49,7 +49,7 @@ const UserProfile = () => {
           )}
         </h1>
 
-        {/* Edit name: Form */}
+        {/* Form */}
         {isFormDisplayed && (
           <form onSubmit={onSubmit}>
             <div className="input">
@@ -87,7 +87,6 @@ const UserProfile = () => {
           </form>
         )}
 
-        {/* Edit name: Button */}
         {!isFormDisplayed && (
           <button className="edit-button" onClick={showForm}>
             Edit Name

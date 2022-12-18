@@ -28,6 +28,7 @@ const FormUserLogin = () => {
 
   return (
     <form className="user-login-form" onSubmit={onSubmit}>
+      {/* Username */}
       <div className="input-wrapper">
         <label htmlFor="username">Username</label>
         <input
@@ -37,6 +38,7 @@ const FormUserLogin = () => {
           autoComplete="username"
         />
       </div>
+      {/* Password */}
       <div className="input-wrapper">
         <label htmlFor="password">Password</label>
         <input
@@ -46,6 +48,7 @@ const FormUserLogin = () => {
           autoComplete="current-password"
         />
       </div>
+      {/* Remember-me */}
       <div className="input-remember">
         <input
           type="checkbox"
@@ -54,9 +57,11 @@ const FormUserLogin = () => {
         />
         <label htmlFor="remember-me">Remember me</label>
       </div>
+      {/* Error */}
       <div className="error">
         <span>{error}</span>
       </div>
+      {/* Button */}
       <button>Sign In</button>
     </form>
   );

@@ -7,6 +7,7 @@ import IconSecurity from '../../assets/icons/icon-security.png';
 const Home = () => {
   return (
     <section className="home">
+      {/* Hero */}
       <section className="home__hero">
         <div className="hero">
           <div className="hero__content">
@@ -20,6 +21,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* Features */}
       <section className="home__features">
         <div className="features">
           <h2 className="sr-only">Features</h2>
