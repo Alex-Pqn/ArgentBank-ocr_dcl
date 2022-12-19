@@ -33,7 +33,7 @@ const UserProfile = () => {
     dispatch(userActions.retrieveUserProfile(user.token));
   }, [dispatch, user.token]);
 
-  if (!user.isLogged) return <Navigate to="/login" />;
+  if (!user.isLogged) return <Navigate to="/" />;
 
   return (
     <div className="user-profile bg-dark">
