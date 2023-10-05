@@ -10,6 +10,7 @@ Vous venez de commencer à travailler chez Remede Agency, une agence spécialis�
 Après quelques jours dans l’entreprise, vous recevez le courriel suivant :
 
 <details><summary><b>Email : Bienvenue !</b></summary>
+  
 ```
 De : Mila
 À : Vous
