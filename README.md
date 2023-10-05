@@ -91,7 +91,7 @@ Avery Moreau
 - Redux utilisé pour gérer le state de l'ensemble de l'application
 - Rédaction [du document décrivant la partie transactions](https://github.com/Alex-Pqn/ArgentBank-backend-ocr_dcl/blob/master/swagger.yaml) de l'API en suivant les directives Swagger
 - Respect des [Issues Github](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/.github/ISSUE_TEMPLATE) mises en place
-- Utilisation de composants réutilisables et validation des données grâce aux props React
+- Utilisation de composants réutilisables
 - Communication avec une API REST existante
 - Utilisation de services et de requêtes POST et PUT afin de récupérer et mettre à jour des données via l'API
 - Architecture des dossiers et fichiers respectée
