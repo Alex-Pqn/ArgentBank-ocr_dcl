@@ -98,9 +98,7 @@ Avery Moreau
 - Utilisation de Sass et de la méthodologie BEM.
 - Responsive
 
----
-
-### Prerequisites
+## Prerequisites
 
 - You will need to have Node and `npm` installed locally on your machine.
 
@@ -108,8 +106,6 @@ Avery Moreau
 > The [backend](https://github.com/Alex-Pqn/ArgentBank-backend-ocr_dcl) must also be installed in order to launch this project.
 
 ## Project setup
-
-In the project directory, you can run:
 
 ### Install
 ```
@@ -164,18 +160,14 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 npm run eject
 ```
 
----
-
-### Accounts / Login
+## Accounts / Login
 
 | Email            | Password    |
 | ---------------- | ------------|
 | tony@stark.com   | password123 |
 | steve@rogers.com | password456 |
 
----
-
-### Preview
+## Preview
 
 ![CV](./src/assets/ArgentBank.png)
 <br/>
