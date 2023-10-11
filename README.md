@@ -86,7 +86,7 @@ Au plaisir de travailler avec vous !
 Avery Moreau
 </details>
 
-#### Objectifs
+#### Objectifs réalisés
 - Site web créé sous React 18.2 et React Router 6.4
 - Redux utilisé pour gérer le state de l'ensemble de l'application
 - Rédaction [du document décrivant la partie transactions](https://github.com/Alex-Pqn/ArgentBank-backend-ocr_dcl/blob/master/swagger.yaml) de l'API en suivant les directives Swagger
